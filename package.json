@@ -1,6 +1,6 @@
 {
   "name": "@bingumd/sass-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "bingumd <bingumd@gmail.com>",
   "description": "A comprehensive and flexible utility-first styling solution",
   "main": "index.scss",
@@ -23,7 +23,7 @@
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
-    "css": "^3.0.0",
+    "get-duplicate-css-selectors": "^0.1.0",
     "jest": "^27.3.1",
     "rimraf": "^3.0.2",
     "sass": "1.43.4"
