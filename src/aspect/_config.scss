@@ -1,0 +1,30 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: ASPECT
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:math';
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'aspect-' !default;
+
+// Default rules
+$default: (
+    '1\\:1' : 100%,
+    '4\\:3' : math.div(100%, math.div(4, 3)),  // 75%
+    '3\\:2' : math.div(100%, math.div(3, 2)),  // 66.6666666667%
+    '16\\:9': math.div(100%, math.div(16, 9)), // 56.25%;
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

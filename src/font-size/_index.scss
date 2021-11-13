@@ -1,0 +1,21 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: FONT SIZE
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as font-size-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (font-size: var(--font-size-#{$selector})),
+            config.$variants
+        );
+    }
+}

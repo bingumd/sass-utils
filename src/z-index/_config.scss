@@ -1,0 +1,32 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: ZINDEX
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default class name
+$class: 'z' !default;
+
+// Default variants
+$variants: () !default;
+
+// Default rules
+$default: (
+    -3: -3,
+    -2: -2,
+    -1: -1,
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

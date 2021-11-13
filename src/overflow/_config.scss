@@ -1,0 +1,29 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: OVERFLOW
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'ov' !default;
+
+// Default rules
+$default: (
+    a: auto,
+    h: hidden,
+    v: visible,
+    s: scroll,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merg all rules
+$rules: map.merge($default, $extend);

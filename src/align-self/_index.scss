@@ -1,0 +1,21 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: ALIGN SELF
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as align-self-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (align-self: $value),
+            config.$variants
+        );
+    }
+}

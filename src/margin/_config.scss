@@ -1,0 +1,31 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: MARGIN
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+@use '../settings';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: (responsive) !default;
+
+// Default class name
+$class: 'm' !default;
+
+// Default rules
+$default: settings.$spacings !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);
+
+// Enable positions?
+$position: false !default;
+
+// Positions
+$positions: settings.$positions !default;

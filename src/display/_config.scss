@@ -1,0 +1,32 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: DISPLAY
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: (responsive) !default;
+
+// Default class name
+$class: 'd' !default;
+
+// Default rules
+$default: (
+    n : none,
+    b : block,
+    ib: inline-block,
+    i : inline,
+    f : flex,
+    if: inline-flex,
+    in: initial,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// MErge all rules
+$rules: map.merge($default, $extend);

@@ -1,0 +1,27 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: USER SELECT
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'us' !default;
+
+// Default rules
+$default: (
+    n: none,
+    a: auto,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

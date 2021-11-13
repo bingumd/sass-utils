@@ -1,0 +1,21 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: TEXT ALIGN
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as text-align-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (text-align: $value),
+            config.$variants
+        );
+    }
+}

@@ -1,0 +1,33 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: OVERFLOW
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as overflow-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (overflow: $value),
+            config.$variants
+        );
+
+        @include tools.merge(
+            #{config.$class}#{$selector}-x,
+            (overflow-x: $value),
+            config.$variants
+        );
+
+        @include tools.merge(
+            #{config.$class}#{$selector}-y,
+            (overflow-y: $value),
+            config.$variants
+        );
+    }
+}

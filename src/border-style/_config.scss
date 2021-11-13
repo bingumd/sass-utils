@@ -1,0 +1,36 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: BORDER STYLE
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+@use '../settings';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'bs' !default;
+
+// Default rules
+$default: (
+    solid : solid,
+    dashed: dashed,
+    dotted: dotted,
+    double: double,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);
+
+// Enable positions?
+$position: false !default;
+
+// Positions
+$positions: (settings.$positions) !default;

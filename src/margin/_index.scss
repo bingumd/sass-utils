@@ -1,0 +1,44 @@
+﻿/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: MARGIN
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as margin-*;
+
+// Dependences
+@use 'sass:map';
+@use 'sass:meta';
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (margin: $value),
+            config.$variants
+        );
+
+        @if config.$position {
+            @each $pos-key, $pos-val in config.$positions {
+                @if $pos-val {
+                    $props: ();
+
+                    @each $dir in $pos-val {
+                        $props: map.merge(
+                            $props,
+                            (margin-#{$dir}: $value)
+                        );
+                    }
+
+                    @include tools.merge(
+                        #{config.$class}#{$pos-key}#{$selector},
+                        $props,
+                        config.$variants
+                    );
+                }
+            }
+        }
+    }
+}

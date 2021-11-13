@@ -1,0 +1,29 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: FLEX DIRECTION
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: (responsive) !default;
+
+// Default class name
+$class: 'fd' !default;
+
+// Default rules
+$default: (
+    r : row,
+    rr: row-reverse,
+    c : column,
+    cr: column-reverse,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

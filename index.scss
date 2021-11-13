@@ -1,0 +1,58 @@
+@forward 'src/settings';
+@forward 'src/tools';
+
+// FLEX
+@forward 'src/align-content';
+@forward 'src/align-items';
+@forward 'src/align-self';
+@forward 'src/flex-direction';
+@forward 'src/flex-wrap';
+@forward 'src/justify-content';
+
+// LAYOUT
+@forward 'src/display';
+@forward 'src/position';
+@forward 'src/overflow';
+@forward 'src/visibility';
+@forward 'src/z-index';
+
+// SIZING
+@forward 'src/width';
+@forward 'src/height';
+
+// SPACING
+@forward 'src/margin';
+@forward 'src/padding';
+
+// TYPOGRAPHY
+@forward 'src/color/';
+@forward 'src/font-family';
+@forward 'src/font-size';
+@forward 'src/font-style';
+@forward 'src/font-weight';
+@forward 'src/letter-spacing';
+@forward 'src/line-height';
+@forward 'src/text-align';
+@forward 'src/text-decoration';
+@forward 'src/text-transform';
+
+// BORDER
+@forward 'src/border';
+@forward 'src/border-width';
+@forward 'src/border-style';
+@forward 'src/border-color';
+@forward 'src/border-radius';
+
+// BACKGROUND
+@forward 'src/background-color';
+
+// INTERACTIVITY
+@forward 'src/pointer-events';
+@forward 'src/user-select';
+
+// EFFECTS
+@forward 'src/opacity';
+
+// MIXT
+@forward 'src/aspect';
+@forward 'src/gap';

@@ -1,0 +1,30 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: JUSTIFY CONTENT
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: (responsive) !default;
+
+// Default class name
+$class: 'jc' !default;
+
+// Default rules
+$default: (
+    fs: flex-start,
+    fe: flex-end,
+    c : center,
+    sb: space-between,
+    sa: space-around,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

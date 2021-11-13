@@ -1,0 +1,51 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: BORDER RADIUS
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+@use '../settings';
+
+// Enable this module?
+$enable: true !default;
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'br' !default;
+
+// Default rules
+$default: (
+    0     : 0,
+    2     : 2px,
+    4     : 4px,
+    6     : 6px,
+    8     : 8px,
+    pill  : 33px,
+    circle: 50%,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);
+
+// Enable positions?
+$position: false !default;
+
+// Positions
+$positions: (
+    tl    : top-left,
+    tr    : top-right,
+    br    : bottom-right,
+    bl    : bottom-left,
+    top   : top-left top-right,
+    end   : top-right bottom-right,
+    bottom: bottom-right bottom-left,
+    start : bottom-left top-left,
+) !default;

@@ -1,0 +1,33 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: GAP
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as gap-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (--gap: $value),
+            config.$variants
+        );
+
+        @include tools.merge(
+            #{config.$class}#{$selector}-x,
+            (--gap-x: $value),
+            config.$variants
+        );
+
+        @include tools.merge(
+            #{config.$class}#{$selector}-y,
+            (--gap-y: $value),
+            config.$variants
+        );
+    }
+}

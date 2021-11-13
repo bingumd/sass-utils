@@ -1,0 +1,46 @@
+﻿/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: PADDING
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as padding-*;
+
+// Dependences
+@use 'sass:map';
+@use 'sass:meta';
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @if meta.type-of($value) == 'number' {
+            @include tools.merge(
+                #{config.$class}#{$selector},
+                (padding: $value),
+                config.$variants
+            );
+
+            @if config.$position {
+                @each $pos-key, $pos-val in config.$positions {
+                    @if $pos-val {
+                        $props: ();
+
+                        @each $dir in $pos-val {
+                            $props: map.merge(
+                                $props,
+                                (padding-#{$dir}: $value)
+                            );
+                        }
+
+                        @include tools.merge(
+                            #{config.$class}#{$pos-key}#{$selector},
+                            $props,
+                            config.$variants
+                        );
+                    }
+                }
+            }
+        }
+    }
+}

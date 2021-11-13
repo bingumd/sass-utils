@@ -1,0 +1,47 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: BORDER
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as border-*;
+
+// Dependences
+@use 'sass:map';
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        $declaration: $value solid config.$color;
+
+        @if $value == 0 {
+            $declaration: none;
+        }
+
+        @include tools.merge(
+            #{config.$class}-#{$selector},
+            (border: $declaration),
+            config.$variants
+        );
+
+        @if config.$position {
+            @each $key, $position in config.$positions {
+                $props: ();
+
+                @each $dir in $position {
+                    $props: map.merge(
+                        $props,
+                        (border-#{$dir}: $declaration)
+                    );
+                }
+
+                @include tools.merge(
+                    #{config.$class}#{$key}-#{$selector},
+                    $props,
+                    config.$variants
+                );
+            }
+        }
+    }
+}

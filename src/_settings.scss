@@ -1,0 +1,77 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// SETTINGS
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Declare the global values
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Default namespace
+$ns: 'u-' !default;
+
+// Default separators
+$breakpoint-separator: '\\@' !default;
+$variant-separator: '\\:' !default;
+
+// Default breakpoints
+$breakpoints: (md: 769px, lg: 1024px) !default;
+
+// Default variants
+$variants: (hover, focus, active, visited) !default;
+
+// Default colors
+$colors: (
+    current: currentColor,
+    transparent: transparent,
+) !default;
+
+// Default ignored colors
+$ignored-colors: (transparent, currentColor) !default;
+
+// Default positions
+$positions: (
+    t: top,
+    r: right,
+    b: bottom,
+    l: left,
+    x: left right,
+    y: top bottom,
+) !default;
+
+// Default sizings
+$sizings-default: (
+    a : auto,
+    16: 16.66666666666667,
+    33: 33.33333333333333,
+    66: 66.66666666666667,
+) !default;
+
+@for $i from 0 through 20 {
+    $value: $i * 5;
+    $sizings-default: map.merge($sizings-default, ($value: $value));
+}
+
+// Extend sizings
+$sizings-extend: () !default;
+
+// Merge all spacings
+$sizings: map.merge($sizings-default, $sizings-extend);
+
+// Default spacing
+$spacing: 4px !default;
+
+// Default spacings
+$spacings-default: (
+    a: auto,
+) !default;
+
+@for $i from 0 through 10 {
+    $spacings-default: map.merge($spacings-default, ($i: $spacing * $i));
+}
+
+// Extend spacings
+$spacings-extend: () !default;
+
+// Merge all spacings
+$spacings: map.merge($spacings-default, $spacings-extend);

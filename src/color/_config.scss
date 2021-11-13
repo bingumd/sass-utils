@@ -1,0 +1,25 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: COLOR
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+@use '../settings';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'color-' !default;
+
+// Default rules
+$default: settings.$colors !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merga all rules
+$rules: map.merge($default, $extend);

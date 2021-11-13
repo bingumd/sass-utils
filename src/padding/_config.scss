@@ -1,0 +1,31 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: PADDING
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+@use '../settings';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: (responsive) !default;
+
+// Default class name
+$class: 'p' !default;
+
+// Default rules
+$default: settings.$spacings !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);
+
+// Enable positions
+$position: true !default;
+
+// Positions
+$positions: settings.$positions !default;

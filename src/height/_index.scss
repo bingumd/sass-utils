@@ -1,0 +1,48 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: HEIGHT
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as height-*;
+
+// Dependences
+@use 'sass:meta';
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @if meta.type-of($value) == 'string' {
+            @include tools.merge(
+                #{config.$class}#{$selector},
+                (height: $value),
+                config.$variants
+            );
+        } @else if meta.type-of($value) == 'number' {
+            @include tools.merge(
+                #{config.$class}#{$selector},
+                (height: $value + 0%),
+                config.$variants
+            );
+
+            @include tools.merge(
+                v#{config.$class}#{$selector},
+                (height: $value + 0vh),
+                config.$variants
+            );
+
+            @include tools.merge(
+                min-#{config.$class}#{$selector},
+                (height: $value + 0%),
+                config.$variants
+            );
+
+            @include tools.merge(
+                min-v#{config.$class}#{$selector},
+                (min-height: $value + 0vh),
+                config.$variants
+            );
+        }
+    }
+}

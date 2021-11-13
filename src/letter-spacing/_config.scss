@@ -1,0 +1,34 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// CONFIG: LETTER SPACING
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependences
+@use 'sass:map';
+
+// Enable this module?
+$enable: true !default;
+
+// Default variants
+$variants: () !default;
+
+// Default class name
+$class: 'ls' !default;
+
+// Default rules
+$default: (
+    '-02' : -0.2em,
+    '-015': -0.15em,
+    '-01' : -0.1em,
+    '-005': -0.05em,
+    '0'   : 0,
+    '005' : 0.05em,
+    '01'  : 0.1em,
+    '015' : 0.15em,
+    '02'  : 0.2em,
+) !default;
+
+// Extend rules
+$extend: () !default;
+
+// Merge all rules
+$rules: map.merge($default, $extend);

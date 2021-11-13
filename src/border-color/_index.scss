@@ -1,0 +1,84 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: BORDER COLOR
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as border-color-*;
+
+// Dependences
+@use 'sass:map';
+@use 'sass:meta';
+@use 'config';
+@use '../settings';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $values in config.$rules {
+        @if meta.type-of($values) == map {
+            @each $property, $value in $values {
+                $newSelector: tools.str-replace('#{$selector}-#{$property}', '-base', '');
+
+                @include tools.merge(
+                    #{config.$class}-#{$newSelector},
+                    (border-color: var(--color-#{$newSelector})),
+                    config.$variants
+                );
+
+                @if config.$position {
+                    @each $key, $position in config.$positions {
+                        @if $position {
+                            $props: ();
+
+                            @each $dir in $position {
+                                $props: map.merge(
+                                    $props,
+                                    (border-#{$dir}-color: var(--color-#{$newSelector}))
+                                );
+                            }
+
+                            @include tools.merge(
+                                #{config.$class}#{$key}-#{$newSelector},
+                                $props,
+                                config.$variants
+                            );
+                        }
+                    }
+                }
+            }
+        } @else {
+            $declaration: var(--color-#{$selector});
+
+            @if (index(settings.$ignored-colors, $values)) {
+                $declaration: $values;
+            }
+
+            @include tools.merge(
+                #{config.$class}-#{$selector},
+                (border-color: $declaration),
+                config.$variants
+            );
+
+            @if config.$position {
+                @each $key, $position in config.$positions {
+                    @if $position {
+                        $props: ();
+
+                        @each $dir in $position {
+                            $props: map.merge(
+                                $props,
+                                (border-#{$dir}-color: $declaration)
+                            );
+                        }
+
+                        @include tools.merge(
+                            #{config.$class}#{$key}-#{$selector},
+                            $props,
+                            config.$variants
+                        );
+                    }
+                }
+            }
+        }
+    }
+}

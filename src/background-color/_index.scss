@@ -1,0 +1,41 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: BACKGROUND COLOR
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as background-color-*;
+
+// Dependences
+@use 'sass:meta';
+@use 'config';
+@use '../settings';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $values in config.$rules {
+        @if meta.type-of($values) == map {
+            @each $property, $value in $values {
+                $newSelector: tools.str-replace('#{$selector}-#{$property}', '-base', '');
+
+                @include tools.merge(
+                    #{config.$class}#{$newSelector},
+                    (background-color: var(--color-#{$newSelector})),
+                    config.$variants
+                );
+            }
+        } @else {
+            $declaration: (background-color: var(--color-#{$selector}));
+
+            @if (index(settings.$ignored-colors, $values)) {
+                $declaration: (background-color: $values);
+            }
+
+            @include tools.merge(
+                #{config.$class}#{$selector},
+                $declaration,
+                config.$variants
+            );
+        }
+    }
+}

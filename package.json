@@ -1,0 +1,34 @@
+{
+  "name": "@bingumd/sass-utils",
+  "version": "0.1.0",
+  "author": "bingumd <bingumd@gmail.com>",
+  "description": "A comprehensive and flexible utility-first styling solution",
+  "main": "index.scss",
+  "homepage": "https://github.com/bingumd/sass-utils",
+  "license": "MIT",
+  "repository": "bingumd/sass-utils",
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "itcss",
+    "mobile-first",
+    "utility-first",
+    "responsive",
+    "utils"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "rimraf dist && sass --load-path=node_modules --no-source-map build.scss dist/utils.css",
+    "update": "yarn upgrade-interactive --latest"
+  },
+  "devDependencies": {
+    "css": "^3.0.0",
+    "jest": "^27.3.1",
+    "rimraf": "^3.0.2",
+    "sass": "1.43.4"
+  },
+  "dependencies": {
+    "@bingumd/sass-tools": "^1.0.0"
+  }
+}

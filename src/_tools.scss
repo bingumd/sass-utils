@@ -1,0 +1,77 @@
+// Forward tools
+@forward '@bingumd/sass-tools/src/str-replace';
+
+// Dependences
+@use 'sass:map';
+@use '@bingumd/sass-tools' as tools;
+@use 'settings';
+
+// Variants
+$base-utils: ();
+$variants-utils: ();
+$responsive-utils: ();
+
+@mixin merge($selector, $declaration, $variants: ()) {
+    $selector: #{settings.$ns}#{$selector};
+
+    @include merge-base($selector, $declaration);
+    @include merge-variants($selector, $declaration, $variants);
+    @include merge-responsives($selector, $declaration, $variants);
+}
+
+@mixin merge-base($selector, $declaration) {
+    $base-utils: map.merge($base-utils, ($selector: $declaration)) !global;
+}
+
+@mixin merge-variants($selector, $declaration, $variants) {
+    @each $variant in $variants {
+        @if (index(settings.$variants, $variant)) {
+            $variant-name: '#{$selector}#{settings.$variant-separator}#{$variant}:#{$variant}';
+            $variants-utils: map.merge($variants-utils, ($variant-name: $declaration)) !global;
+        }
+    }
+}
+
+@mixin merge-responsives($selector, $declaration, $variants) {
+    @if (index($variants, responsive)) {
+        @each $bp-name, $bp-value in settings.$breakpoints {
+            // create breakpoint key
+            @if not map.has-key($responsive-utils, $bp-name) {
+                $responsive-utils: map.merge($responsive-utils, ($bp-name: ())) !global;
+            }
+
+            $screen-name: #{$selector}#{settings.$breakpoint-separator}#{$bp-name};
+            $screen: map.get($responsive-utils, $bp-name);
+            $screen: map.merge($screen, ($screen-name: $declaration));
+            $responsive-utils: map.merge($responsive-utils, ($bp-name: $screen)) !global;
+        }
+    }
+}
+
+@mixin make($selector, $declaration) {
+    .#{$selector} {
+        @each $propert, $value in $declaration {
+            #{$propert}: #{$value};
+        }
+    }
+}
+
+@mixin init() {
+    // Base & Varinats
+    @each $selector, $declaration in map.merge($base-utils, $variants-utils) {
+        @include make($selector, $declaration);
+    }
+
+    // Responsive
+    @each $bp-name, $bp-value in settings.$breakpoints {
+        $utils: map.get($responsive-utils, $bp-name);
+
+        @if $utils != null {
+            @include tools.mq($bp-name) {
+                @each $selector, $declaration in $utils {
+                    @include make($selector, $declaration);
+                }
+            }
+        }
+    }
+}
