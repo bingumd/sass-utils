@@ -29,7 +29,7 @@ yarn install @bingumd/sass-utils
 
 ```scss
 // Config
-@use '@bingumd/utils' with (
+@use '@bingumd/sass-utils' with (
     $border-style-enable: false,
     $color-extend: (
         black: #000000,
@@ -47,5 +47,5 @@ yarn install @bingumd/sass-utils
 );
 
 // Build utils
-@include utils.init();
+@include sass-utils.init();
 ```
