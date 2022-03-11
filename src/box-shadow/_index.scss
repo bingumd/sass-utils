@@ -1,0 +1,21 @@
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// UTIL: BOX SHADOW
+/// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Forward
+@forward 'config' as box-shadow-*;
+
+// Dependences
+@use 'config';
+@use '../tools';
+
+// Merge
+@if (config.$enable) {
+    @each $selector, $value in config.$rules {
+        @include tools.merge(
+            #{config.$class}#{$selector},
+            (box-shadow: $value),
+            config.$variants
+        );
+    }
+}

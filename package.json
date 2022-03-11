@@ -1,6 +1,6 @@
 {
   "name": "@bingumd/sass-utils",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "author": "bingumd <bingumd@gmail.com>",
   "description": "A comprehensive and flexible utility-first styling solution",
   "main": "index.scss",
